@@ -22,7 +22,7 @@ ICSS(data, demean = FALSE)
 
 \references{
   Inclan, C., & Tiao, G. C. (1994): Use of cumulative sums of squares for retrospective detection of changes of variance. \emph{Journal of the American Statistical Association}, 89(427), 913-923.
-  \doi{10.2307/2290916}.
+  \url{https://www.jstor.org/stable/2290916}.
 }
 
 \examples{
