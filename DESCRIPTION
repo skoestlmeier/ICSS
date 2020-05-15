@@ -1,11 +1,14 @@
 Package: ICSS
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Title:  ICSS algorithm by Inclan/Tiao (1994)
+Version: 1.0
+Date: 2020-05-15
+Author: c(person(given = "Siegfried", family = "Köstlmeier", role = c("aut", "cre"), email = "siegfried.koestlmeier@gmail.com", comment = c(ORCID = "0000-0002-7221-6981"))
+Maintainer: Siegfried Köstlmeier <siegfried.koestlmeier@gmail.com>
+Description: Based on Inclan/Tiao (1994) <doi:10.2307/2290916>, this package provides their Iterative Cumulative Sum of Squares (ICSS) algorithm for detecting structural breakpoints in the variance of time series data.
+License: GPL-2 | file LICENSE
+Depends: R (>= 3.5.0)
+Imports: rstack
+Suggests: testthat
 Encoding: UTF-8
 LazyData: true
