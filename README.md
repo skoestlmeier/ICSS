@@ -4,7 +4,7 @@ Overview
 --------
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/ICSS)](https://cran.r-project.org/package=ICSS)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Travis-CI Build Status](https://travis-ci.org/skoestlmeier/ICSS.svg?branch=master)](https://travis-ci.org/skoestlmeier/ICSS)
+[![Travis-CI Build Status](https://travis-ci.com/skoestlmeier/ICSS.svg?branch=master)](https://travis-ci.com/skoestlmeier/ICSS)
 [![Build status](https://ci.appveyor.com/api/projects/status/nsrpduvdn28gf78r?svg=true)](https://ci.appveyor.com/project/skoestlmeier/ICSS)
 [![codecov](https://codecov.io/gh/skoestlmeier/ICSS/branch/master/graph/badge.svg)](https://codecov.io/gh/skoestlmeier/ICSS)
 [![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/ICSS?color=blue)](https://CRAN.R-project.org/package=ICSS)
