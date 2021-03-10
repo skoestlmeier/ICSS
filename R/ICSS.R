@@ -101,7 +101,7 @@ ICSS_step_1_and_2 <- function(x){
       Dk_step2a = CenteredCusumValues(x[1:t2])
       tmp <- check_critical_value(Dk_step2a)
 
-      exceeds <- tmp$exceeds
+      exceeds <- ifelse(is.na(tmp$exceeds), FALSE, tmp$exceeds)
       position <- tmp$position
 
     }
@@ -115,7 +115,7 @@ ICSS_step_1_and_2 <- function(x){
       t1 <- position
       Dk_step2b <- CenteredCusumValues(x[t1:length(x)])
       tmp <- check_critical_value(Dk_step2b)
-      exceeds <- tmp$exceeds
+      exceeds <- ifelse(is.na(tmp$exceeds), FALSE, tmp$exceeds)
       position2 <- tmp$position
       position <- position2 + position
     }
