@@ -58,7 +58,7 @@ ICSS <- function(data = data, demean = FALSE){
       Dk <- CenteredCusumValues(data[from:to])
       tmp <- check_critical_value(Dk)
 
-      exceeds <- tmp$exceeds
+      exceeds <- ifelse(is.na(tmp$exceeds), FALSE, tmp$exceeds)
       position <- tmp$position
 
       if(exceeds){
