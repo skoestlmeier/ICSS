@@ -54,11 +54,13 @@ ICSS <- function(data = data, demean = FALSE){
     for(i in 2:(length(potential_change_points) -1)){
       from <- potential_change_points[i-1] + 1
       to <- potential_change_points[i+1]
+      
+      if(is.na(to)) return(NA)
 
       Dk <- CenteredCusumValues(data[from:to])
       tmp <- check_critical_value(Dk)
 
-      exceeds <- tmp$exceeds
+      exceeds <- ifelse(is.na(tmp$exceeds), FALSE, tmp$exceeds)
       position <- tmp$position
 
       if(exceeds){
@@ -101,7 +103,7 @@ ICSS_step_1_and_2 <- function(x){
       Dk_step2a = CenteredCusumValues(x[1:t2])
       tmp <- check_critical_value(Dk_step2a)
 
-      exceeds <- tmp$exceeds
+      exceeds <- ifelse(is.na(tmp$exceeds), FALSE, tmp$exceeds)
       position <- tmp$position
 
     }
@@ -115,7 +117,7 @@ ICSS_step_1_and_2 <- function(x){
       t1 <- position
       Dk_step2b <- CenteredCusumValues(x[t1:length(x)])
       tmp <- check_critical_value(Dk_step2b)
-      exceeds <- tmp$exceeds
+      exceeds <- ifelse(is.na(tmp$exceeds), FALSE, tmp$exceeds)
       position2 <- tmp$position
       position <- position2 + position
     }
