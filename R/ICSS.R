@@ -43,7 +43,7 @@ ICSS <- function(data = data, demean = FALSE){
 
   }
 
-  if(sum(potential_change_points)==0) return(NA)
+  if(sum(potential_change_points, na.rm = T)==0) warning("Unable to identify structural variance breaks in the series.")
 
   potential_change_points <- unique(c(0, sort(potential_change_points), length(data)))
 
@@ -54,12 +54,13 @@ ICSS <- function(data = data, demean = FALSE){
     for(i in 2:(length(potential_change_points) -1)){
       from <- potential_change_points[i-1] + 1
       to <- potential_change_points[i+1]
-      
+
       if(is.na(to)) return(NA)
 
       Dk <- CenteredCusumValues(data[from:to])
       tmp <- check_critical_value(Dk)
 
+      if(length(tmp$position)==0) return(NA)
       exceeds <- ifelse(is.na(tmp$exceeds), FALSE, tmp$exceeds)
       position <- tmp$position
 
@@ -91,7 +92,7 @@ ICSS_step_1_and_2 <- function(x){
 
   Dk <- CenteredCusumValues(x);
   tmp <- check_critical_value(Dk);
-
+  if(length(tmp$position)==0) return(NA)
   exceeds <- tmp$exceeds
   position_step1 <- tmp$position
 
@@ -102,7 +103,7 @@ ICSS_step_1_and_2 <- function(x){
       t2 <- position
       Dk_step2a = CenteredCusumValues(x[1:t2])
       tmp <- check_critical_value(Dk_step2a)
-
+      if(length(tmp$position)==0) return(NA)
       exceeds <- ifelse(is.na(tmp$exceeds), FALSE, tmp$exceeds)
       position <- tmp$position
 
@@ -117,6 +118,7 @@ ICSS_step_1_and_2 <- function(x){
       t1 <- position
       Dk_step2b <- CenteredCusumValues(x[t1:length(x)])
       tmp <- check_critical_value(Dk_step2b)
+      if(length(tmp$position)==0) return(NA)
       exceeds <- ifelse(is.na(tmp$exceeds), FALSE, tmp$exceeds)
       position2 <- tmp$position
       position <- position2 + position
@@ -149,6 +151,8 @@ CenteredCusumValues <- function(x){
 check_critical_value <- function(Dk){
   value <- max(abs(Dk))
   position <- which(abs(Dk)==value)
+
+  if(length(position) > 1) return(list(position = NA, exceeds = NA))
 
   M <- sqrt(length(Dk)/2) * value
   exceeds <- M > 1.358

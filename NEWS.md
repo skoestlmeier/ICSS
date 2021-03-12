@@ -1,3 +1,7 @@
+# ICSS 1.1
+## Bug fixes
+Fixing bugs when there is no structural breakpoint in the variance of the data. Implemented checks and appropriate user warnings.
+
 # ICSS 1.0
 ## New features
 
